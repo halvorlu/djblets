@@ -1,6 +1,6 @@
 {% load i18n %}
 <div class="paginator">
-{% for letter in alphanumeric_string %}
+{% for letter in letters %}
 {%  ifequal current_letter letter %}
  <span class="current-letter">
  <span class="current-page">{{letter}}</span>
