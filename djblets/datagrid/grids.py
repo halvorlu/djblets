@@ -1127,11 +1127,11 @@ class AlphanumericDataGrid(DataGrid):
     """
     def __init__(self, request, queryset, sortable_column,
                  extra_regex='^[0-9].*', *args, **kwargs):
-        self.current_letter = request.GET.get('letter', 'A')
+        self.current_letter = request.GET.get('letter', 'all')
 
         regex_match = re.compile(extra_regex)
 
-        if self.current_letter == 'All':
+        if self.current_letter == 'all':
             pass  # No filtering
         elif self.current_letter.isalpha():
             queryset = queryset.filter(**{
@@ -1149,7 +1149,7 @@ class AlphanumericDataGrid(DataGrid):
 
         self.extra_context['current_letter'] = self.current_letter
         self.extra_context['letters'] = \
-            ['All', '0'] + list(string.ascii_uppercase)
+            ['all', '0'] + list(string.ascii_uppercase)
 
         self.special_query_args.append('letter')
         self.paginator_template = 'datagrid/alphanumeric_paginator.html'
