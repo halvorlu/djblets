@@ -1148,8 +1148,8 @@ class AlphanumericDataGrid(DataGrid):
                                                    *args, **kwargs)
 
         self.extra_context['current_letter'] = self.current_letter
-        self.extra_context['letters'] = \
-            ['all', '0'] + list(string.ascii_uppercase)
+        self.extra_context['letters'] = (['all', '0'] +
+                                         list(string.ascii_uppercase))
 
         self.special_query_args.append('letter')
         self.paginator_template = 'datagrid/alphanumeric_paginator.html'
